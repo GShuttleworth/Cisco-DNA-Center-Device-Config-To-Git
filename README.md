@@ -18,7 +18,7 @@ This allows you to monitor for configuration changes and track changes to over t
 
 ### Use a virtual Cisco DNA Center API from DevNet Sandbox
 
-You can get a virtual instance of a Cisco IOS-XE device from the [DevNet Sandbox](https://devnetsandbox.cisco.com/) if you don't want to try this against a physical device.
+You can access a virtual DNA Center API from the [DevNet Sandbox](https://devnetsandbox.cisco.com/) if you don't want to try this against a physical DNA Center deployment.
 
 > This is optional
 
@@ -67,7 +67,7 @@ pip install -r requirements.txt
 
 The `dna_center_to_git.py` Python script has some variables you need to define.
 
-Edit `url`, `username` and `password` to match your device. By default the connection details are for the DevNet IOS-EX Sandbox mentioned above.
+Edit `url`, `username` and `password` to match your device. By default the connection details are for the DevNet DNA Center Sandbox mentioned above.
 
 You should also set `use_ssl_verification` to `True` if you are using this code in production to ensure ssl certificates are respected (and used).
 
