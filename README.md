@@ -25,7 +25,7 @@ You can get a virtual instance of a Cisco IOS-XE device from the [DevNet Sandbox
 1. Go to DevNet Sandbox https://devnetsandbox.cisco.com/
 2. Select the always-on version of the Cisco DNA Center sandbox.
 
-![alt text](/readme_images/dna_center_sandbox.png "IOS-XE DevNet Sandbox")
+![alt text](/readme_images/dna_center_sandbox.png "Cisco DNA Center always-on DevNet Sandbox")
 
 ## Getting started
 
@@ -104,6 +104,8 @@ The script automatically deletes all created files after the Git push is complet
 Go to your remote Git repository and you should see your config uploaded.
 
 If you make changes to any device config and re-run the Python script, you will see Git track the changes between the new config and the old config. Check the changes by viewing the most recent Git commit!
+
+![alt text](/readme_images/config_files.png "All Config in Git after running the python script")
 
 ## Troubleshooting
 
