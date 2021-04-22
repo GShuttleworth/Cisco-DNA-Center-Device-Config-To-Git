@@ -1,5 +1,5 @@
 import requests
-import base64
+from requests.auth import HTTPBasicAuth
 import tempfile
 import subprocess
 import json
@@ -16,20 +16,22 @@ commit_message = "Auto config sync with DNA Center devices"
 
 # ------ Connect to DNA Center and get device configs ------
 
-# Generate Base64 login string
-auth_string = f"{username}:{password}"
-auth_string = auth_string.encode("ascii")
-auth_string = base64.b64encode(auth_string)
-auth_string = str(auth_string, "utf-8")
-auth_string = f"Basic {auth_string}"
-
 # Get Authentication Token from DNA Center API
-headers = {"Authorization": auth_string}
-response = requests.post(
-    f"{url}/dna/system/api/v1/auth/token", headers=headers, verify=use_ssl_verification
-)
-response_data = json.loads(response.text)
-authToken = response_data["Token"]
+headers = {"Content-Type": "application/json", "Accept": "application/json"}
+
+try:
+    response = requests.post(
+        f"{url}/dna/system/api/v1/auth/token",
+        headers=headers,
+        auth=HTTPBasicAuth(username, password),
+        verify=use_ssl_verification,
+    )
+    response.raise_for_status()
+    response_data = json.loads(response.text)
+    authToken = response_data["Token"]
+    print("Successful Token Generation.\n")
+except requests.exceptions.HTTPError as err:
+    raise SystemExit(err)
 
 # Get all Device Config
 headers = {"x-auth-token": authToken}
